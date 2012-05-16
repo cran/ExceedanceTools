@@ -1,0 +1,12 @@
+124b44b78162a8d604ee9220fc2cbea3 *DESCRIPTION
+412f756f31e74a5cfe0eb6d9931cdbba *NAMESPACE
+6b9d0ad91346ea83d78c00d51dbe53bf *R/ExceedanceTools.R
+53706cbcbc814b5ee12b6981cd07dc51 *data/sdata.RData
+65d35ca89219695f0c2d257d92fc59a0 *man/ExceedanceTools-package.Rd
+863dea13d75530fe46bdbb1b6bf1abb1 *man/create.pgrid.Rd
+452a0b2c2caf685606c05dec77adab76 *man/create.pgrid2.Rd
+eb6dd75fee5c8bea7dd60659f28e93db *man/exceedance.ci.Rd
+a66f14fcfe458caf493816bb94df43ef *man/plot.pgrid.Rd
+709c3872266d91b91b9824de9fe5ad6c *man/sdata.Rd
+5796b4c0075cc7693c90c4809d760f31 *man/statistic.cv.Rd
+588754ba89c5164ed7ee1bbe3c5950c7 *man/statistic.sim.Rd
