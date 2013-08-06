@@ -115,16 +115,19 @@ create.pgrid2 <- function(xgrid, ygrid, midpoints = FALSE, poly.coords = NULL)
 	return(out)
 }
 
-statistic.sim <- function(krige.obj, level, alternative = "less")
+statistic.sim <- function(krige.obj, level, alternative = "less", ...)
 {
-	if(is.null(krige.obj$sim))
-	{
-		stop("krige.obj must have conditional simulations")
-	}
+	statistics_sim_arg_check(krige.obj, level, alternative)
 
 	nsim <- ncol(krige.obj$sim)
-	statistic <- (krige.obj$pred - level)/sqrt(krige.obj$mspe)
-	statistic.sim <- numeric(nsim)
+	stat.sim <- numeric(nsim)
+	if(alternative != "two.sided")
+	{
+		statistic <- (krige.obj$pred - level)/sqrt(krige.obj$mspe)
+	}else
+	{
+		statistic <- abs(krige.obj$pred - level)/sqrt(krige.obj$mspe)
+	}
 
 	if(alternative == "less")
 	{
@@ -133,7 +136,7 @@ statistic.sim <- function(krige.obj, level, alternative = "less")
 			which.exceedance.sim <- which(krige.obj$sim[, i] >= level)
 			if(length(which.exceedance.sim) > 0)
 			{
-				statistic.sim[i] <- min(statistic[which.exceedance.sim])
+				stat.sim[i] <- min(statistic[which.exceedance.sim])
 			}
 		}
 	}else if(alternative == "greater")
@@ -143,13 +146,36 @@ statistic.sim <- function(krige.obj, level, alternative = "less")
 			which.exceedance.sim <- which(krige.obj$sim[, i] <= level)
 			if(length(which.exceedance.sim) > 0)
 			{
-				statistic.sim[i] <- max(statistic[which.exceedance.sim])
+				stat.sim[i] <- max(statistic[which.exceedance.sim])
+			}
+		}
+	}
+	else
+	{
+		# Check arguments.  Create unspecified arguments if needed.
+		arglist <- list(...)
+		argnames <- names(arglist)
+		user.cov <- arglist$user.cov
+		pgrid <- arglist$pgrid
+		npx <- length(pgrid$upx)
+		npy <- length(pgrid$upy)
+
+		for(m in 1:nsim)
+		{
+			simmat <- matrix(krige.obj$sim[, m], nrow = npx, ncol = npy)
+			cL <- contourLines(pgrid$upx, pgrid$upy, simmat, levels = level)
+			
+			if(length(cL) > 0)
+			{
+				obj <- user.cov(cLcoords = get.contours(cL), ...)
+				krige.cL <- krige.uk(arglist$y, obj$V, obj$Vp, obj$Vop, arglist$X, obj$Xp)
+				stat.sim[m] <- max(abs(krige.cL$pred - level)/sqrt(krige.cL$mspe))
 			}
 		}
 	}
 
-	return(list(statistic = statistic, statistic.sim = statistic.sim, alternative = alternative, 
-			level = level))
+	return(list(statistic = statistic, statistic.sim = stat.sim,  
+		alternative = alternative, level = level))
 }
 
 statistic.cv <- function(statistic.sim.obj, conf.level = .95)
@@ -177,7 +203,12 @@ statistic.cv <- function(statistic.sim.obj, conf.level = .95)
 	{
 		cv <- quantile(statistic.sim.obj$statistic.sim, 
 			prob = conf.level, type = type)
+	}else
+	{
+		cv <- quantile(statistic.sim.obj$statistic.sim, 
+			prob = conf.level, type = type)
 	}
+
 	return(cv)
 }
 
@@ -197,6 +228,16 @@ exceedance.ci <- function(statistic.sim.obj, conf.level = .95, type = "null")
 			set <- which(statistic.sim.obj$statistic < cv)		
 		}
 	}else if(alternative == "greater")
+	{
+		if(type == "null")
+		{
+			set <- which(statistic.sim.obj$statistic <= cv)
+		}else
+		{
+			set <- which(statistic.sim.obj$statistic > cv)		
+		}
+	}
+	else
 	{
 		if(type == "null")
 		{
