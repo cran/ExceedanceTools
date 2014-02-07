@@ -1,6 +1,7 @@
-8fd5fc81fb847ed2af2fec5ccd6fd021 *DESCRIPTION
+c74a4aa52dda7270c55ae68eafdcb44c *DESCRIPTION
 412f756f31e74a5cfe0eb6d9931cdbba *NAMESPACE
-3030df0460395a0c6bc0bea72db5d6a9 *R/ExceedanceTools.R
+1991ea005d91a5aeccc477cec94f7830 *NEWS
+cbea88a6c14b837d0bef6054f8b7cbad *R/ExceedanceTools.R
 bb2abf648551f1e577e07b6b6fca9adf *R/ExceedanceTools_arg_check.R
 6926c71923eea0946bcb7425871bd609 *data/colorado.RData
 53706cbcbc814b5ee12b6981cd07dc51 *data/sdata.RData
