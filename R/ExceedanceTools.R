@@ -1,4 +1,6 @@
 #' ExceedanceTools.
+#' 
+#' A package to create confidence or credible regions for spatial data.
 #'
 #' @name ExceedanceTools
 #' @docType package
