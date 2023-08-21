@@ -3,7 +3,9 @@
 \docType{package}
 \name{ExceedanceTools}
 \alias{ExceedanceTools}
+\alias{ExceedanceTools-package}
 \title{ExceedanceTools.}
 \description{
-A package to create confidence or credible regions for spatial data.
+A package to create confidence or credible regions for
+the exceedance regions/excursion sets of spatial data.
 }

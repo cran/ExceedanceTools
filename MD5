@@ -1,10 +1,10 @@
-c279cc21258b4b402c284deeac0748d1 *DESCRIPTION
+71e55d26acefcf11dddcf652c0f3ef4a *DESCRIPTION
 261affc073dbfde511fc2aa1b21d5950 *NAMESPACE
 c6babdc8a6cf4082a79276503d9b5e16 *NEWS
-5fc9450a435151eda24497fe3ebc2785 *R/ExceedanceTools.R
+60321c806c497bd3b82a7de47e87f0f5 *R/ExceedanceTools.R
 bb2abf648551f1e577e07b6b6fca9adf *R/ExceedanceTools_arg_check.R
-1c46de098814c14f4a7e50ddcaae20ce *R/colorado-data.R
-cd39bc4ee9743f11443df14dd1a986cb *R/confreg.R
+de8ead5d1365c52fca2daa423a37a0df *R/colorado-data.R
+4680688a9035560f1c04c23102febbbf *R/confreg.R
 f652d792c45d28f242ad368a67e30fb6 *R/create.pgrid.R
 cd5c10e66775ed22ee4245b3aac5e381 *R/create.pgrid2.R
 71488090a68ea6188a79e8f0e07d2062 *R/exceedance.ci.R
@@ -14,9 +14,9 @@ ba78fde8b9bf7cb3ce5a07aa0adfbc16 *R/statistic.cv.R
 34419b2baa71267d42e3dab9c1566b9b *R/statistic.sim.R
 6926c71923eea0946bcb7425871bd609 *data/colorado.rda
 d6e70c9697c44406bf92d05c8d847389 *data/sdata.rda
-ffd9a76903977295d5f90e9080ae4191 *man/ExceedanceTools.Rd
-05a0301e2c8d82e26f132d097e76186d *man/colorado.Rd
-4d933044f089df5a5d4454abde9b9e3f *man/confreg.Rd
+6b0595419da8ea071340233e081ddf77 *man/ExceedanceTools.Rd
+babb2650ba390fac06eebbe3dbcdc17f *man/colorado.Rd
+5d6010bdce027e23448faacd58ae8ca2 *man/confreg.Rd
 dac3a017f86eecde8951f0a781fb81b5 *man/create.pgrid.Rd
 a84820cb193757cd94ca03f2926627af *man/create.pgrid2.Rd
 c04fe7a355b448464ff626a73c4bdec7 *man/exceedance.ci.Rd
